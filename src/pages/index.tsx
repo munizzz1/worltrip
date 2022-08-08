@@ -1,5 +1,11 @@
 import type { NextPage } from 'next';
 import { Box, Divider, Flex, Image, Text } from '@chakra-ui/react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import { Header } from '../components/Header';
 
@@ -47,7 +53,67 @@ const Home: NextPage = () => {
           Então escolha seu continente
         </Text>
 
-
+        <Box mb='5' mt='20' css={{
+          '.swiper': {
+            width: 1240,
+            height: 450,
+          },
+          '.swiper-slide': {
+            textAlign: 'center',
+            fontSize: '18px',
+            display: '-webkit-box',   
+            WebkitBoxPack: 'center',
+            msFlexPack: 'center',
+            WebkitJustifyContent: 'center',
+            justifyContent: 'center',
+            WebkitBoxAlign: 'center',
+            msFlexAlign: 'center',
+            WebkitAlignItems: 'center',
+            alignItems: 'center',
+          },
+          '.swiper-slide img': {
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+          },
+          '.swiper-button-prev': {
+            color: '#FFBA08',
+          },
+          '.swiper-button-next': {
+            color: '#FFBA08',
+          },
+          '.swiper-pagination-bullet': {
+            background: '#999999'
+          },
+          '.swiper-pagination-bullet-active': {
+            background: '#FFBA08'
+          }
+        }}>
+          <Swiper 
+            cssMode={true}
+            navigation={true}
+            loop={true}
+            pagination={{
+              clickable: true,
+            }}
+            mousewheel={true}
+            keyboard={true}
+            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <Flex width='100%' h='100%' backgroundImage='images/europa.png' align='center' justify='center' direction='column'>
+                <Text fontWeight='bold' color='gray.100' fontSize='48'>Europa</Text>
+                <Text fontWeight='bold' color='gray.100'>O continente mais antigo.</Text>
+              </Flex>
+            </SwiperSlide>
+            <SwiperSlide>Slide 2</SwiperSlide>
+            <SwiperSlide>Slide 3</SwiperSlide>
+            <SwiperSlide>Slide 4</SwiperSlide>
+            <SwiperSlide>Slide 5</SwiperSlide>
+          </Swiper>
+        </Box>
       </Flex>
     </Flex>
   )
